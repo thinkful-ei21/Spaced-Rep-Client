@@ -7,19 +7,19 @@ const initialState = {
     all: [
         {
             id: 0,
-            difficulty: 'Beginner',
-            score: [1, 0, 1, 0, 1],
+            difficulty: 'beginner',
+            score: [2, 0, 1, 0, 1],
             percentage: 33
         },
         {
             id: 2,
-            difficulty: 'Intermediate',
+            difficulty: 'intermediate',
             score: [0, 0, 0, 0, 0],
             percentage: 0
         },
         {
             id: 3,
-            difficulty: 'Advanced',
+            difficulty: 'advanced',
             score: [0, 0, 0, 0, 0],
             percentage: 0
         }

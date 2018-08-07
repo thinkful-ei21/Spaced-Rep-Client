@@ -9,7 +9,7 @@ class Section extends React.Component {
             <div className="section-card">
                 <h2>{this.props.difficulty}</h2>
                 <h3>{this.props.percentage}%</h3>
-                <button onClick={e => this.props.showCard(this.props.id)}>Start</button>
+                <button onClick={e => this.props.showCard(this.props.difficulty)}>Start</button>
             </div >
         )
     }

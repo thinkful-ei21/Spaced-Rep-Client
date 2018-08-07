@@ -2,15 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './require-login';
 import Section from './section-card';
+import { fetchQuestions } from '../actions/questions';
 
 
 export class Dashboard extends React.Component {
-    showCard(id) {
-        this.props.history.push(`/flashcard/${id}`)
+    componentDidMount() {
+        this.props.dispatch(fetchQuestions());
+    }
+
+    showCard(difficulty) {
+        this.props.history.push(`/flashcard/${difficulty}`)
     };
 
     render() {
-        let sections = this.props.user.map(item => <Section showCard={id => this.showCard(id)} key={item.id}{...item} />)
+        let sections = this.props.user.map(item => <Section showCard={difficulty => this.showCard(difficulty)} key={item.id}{...item} />)
         return (
             <div className="dashboard">
                 {sections}
@@ -22,7 +27,8 @@ export class Dashboard extends React.Component {
 const mapStateToProps = state => {
 
     return {
-        user: state.stats.all
+        user: state.stats.all,
+        questions: state.questions.all
     };
 };
 

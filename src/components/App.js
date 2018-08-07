@@ -49,7 +49,7 @@ export class App extends React.Component {
                     <Route exact path="/" component={LandingPage} />
                     <Route exact path="/dashboard" component={Dashboard} />
                     <Route exact path="/register" component={RegistrationPage} />
-                    <Route exact path="/flashcard/:id" component={FlashCard} />
+                    <Route exact path="/flashcard/:difficulty" component={FlashCard} />
                 </div>
             </div>
         );
