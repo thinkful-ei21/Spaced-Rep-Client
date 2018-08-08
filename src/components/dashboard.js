@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requireLogin from './require-login';
-import { fetchQuestion } from '../actions/questions';
+import { fetchQuestion, toggleLanguage } from '../actions/questions';
 import Question from './question';
+import Score from './score';
 
 export class Dashboard extends React.Component {
     componentDidMount() {
@@ -11,21 +12,24 @@ export class Dashboard extends React.Component {
       }
 
       render() {
+        let toggleButton;
+        if (!this.props.checked){
+            toggleButton= <button className="check-button" onClick= {e=> this.props.dispatch(toggleLanguage())}>practice spanish</button>        
+        }
+        else{ toggleButton= <button className="check-button" onClick= {e=> this.props.dispatch(toggleLanguage())}> practicar inglés</button> }
         return (
           <div className="dashboard">
+            {toggleButton}
             <Question />
+            <Score />
           </div>
         );
       }
     }
     
     const mapStateToProps = state => {
-      const { currentUser } = state.auth;
       return {
-        username: state.auth.currentUser.username,
-        name: `${currentUser.firstName} ${currentUser.lastName}`,
-        id: `${currentUser.id}`,
-        currentQuestion: state.question,
+        checked:state.question.toggle
       };
     };
 

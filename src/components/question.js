@@ -9,7 +9,9 @@ class Question extends React.Component {
   onSubmit(e) {
     e.preventDefault();
 
-    let answer = this.props.currentQuestion.english.toLowerCase();
+    let answer; 
+    if(this.props.toggle) {answer=this.props.currentQuestion.english.toLowerCase();}
+    else{answer=this.props.currentQuestion.spanish.toLowerCase();}
     let userInput = e.target.userAnswer.value.toLowerCase();
     e.target.userAnswer.value = '';
 
@@ -20,10 +22,20 @@ class Question extends React.Component {
     }
   }
   render() {
-    const spanishWord =
+    let questionWord;
+    let buttonText;
+    if(this.props.toggle){ questionWord=
       this.props.currentQuestion !== null
-        ? this.props.currentQuestion.spanish
+        ? `what does '${this.props.currentQuestion.spanish}' mean?`
         : undefined;
+        buttonText= 'Submit';
+      }
+    else{ questionWord=      
+      this.props.currentQuestion !== null
+      ? `¿Qué significa '${this.props.currentQuestion.english}'?`
+      : undefined;
+      buttonText='enviar';
+    }
     const feedback =
       this.props.feedback !== null ? this.props.feedback : undefined;
 
@@ -33,14 +45,14 @@ class Question extends React.Component {
     return (
       <div className="question-dashboard">
         <form onSubmit={e => this.onSubmit(e)}>
-          <h2>What does '{spanishWord}' mean?</h2>
+          <h2>{questionWord}</h2>
           <input
             className="useranswer"
             type="text"
             name="userAnswer"
             autoComplete="off"
           />
-          <button className="btn-dash">Submit</button>
+          <button className="btn-dash">{buttonText}</button>
         </form>
         <h3 className="feedback">{feedback}</h3>
         <h3 className="feedback">{correctAnswer}</h3>
@@ -54,6 +66,7 @@ const mapStateToProps = state => ({
   correct: state.question.correct,
   feedback: state.question.feedback,
   correctAnswer: state.question.correctAnswer,
+  toggle:state.question.toggle
 });
 
 export default connect(mapStateToProps)(Question);

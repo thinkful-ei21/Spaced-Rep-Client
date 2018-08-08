@@ -6,6 +6,7 @@ import {
     DISMISS_FEEDBACK,
     FETCH_FEEDBACK_CORRECT,
     FETCH_FEEDBACK_INCORRECT,
+    TOGGLE_LANGUAGE
   } from '../actions/questions';
   
   const initialState = {
@@ -61,7 +62,7 @@ import {
     if (action.type === FETCH_FEEDBACK_CORRECT) {
       return Object.assign({}, state, {
         feedback: action.payload,
-        correctAnswer: `The correct answer for ${state.game.spanish} was ${
+        correctAnswer: `${state.game.spanish} = ${
           state.game.english
         }`,
       });
@@ -69,11 +70,16 @@ import {
     if (action.type === FETCH_FEEDBACK_INCORRECT) {
       return Object.assign({}, state, {
         feedback: `${action.payload}`,
-        correctAnswer: `The correct answer for ${state.game.spanish} was ${
+        correctAnswer: `${state.game.spanish} = ${
           state.game.english
         }`,
       });
-    } else {
+    } 
+    if (action.type === TOGGLE_LANGUAGE) {
+      return Object.assign({}, state, {
+          toggle: !state.toggle,
+      });
+    }else {
       return state;
     }
   }

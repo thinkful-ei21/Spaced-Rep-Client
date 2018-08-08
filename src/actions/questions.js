@@ -31,13 +31,18 @@ export const dismissFeedback = () => ({
 export const FETCH_FEEDBACK_CORRECT = 'FETCH_FEEDBACK_CORRECT';
 export const fetchFeedBackCorrect = () => ({
   type: FETCH_FEEDBACK_CORRECT,
-  payload: 'You guessed correctly',
+  payload: '✔',
 });
 
 export const FETCH_FEEDBACK_INCORRECT = 'FETCH_FEEDBACK_INCORRECT';
 export const fetchFeedBackIncorrect = () => ({
   type: FETCH_FEEDBACK_INCORRECT,
-  payload: 'You guessed incorrectly',
+  payload: '✘',
+});
+
+export const TOGGLE_LANGUAGE = 'TOGGLE_LANGUAGE';
+export const toggleLanguage = () => ({
+    type: TOGGLE_LANGUAGE
 });
 
 export const fetchQuestion = () => (dispatch, getState) => {
