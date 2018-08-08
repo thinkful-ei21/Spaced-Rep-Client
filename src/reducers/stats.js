@@ -8,18 +8,23 @@ const initialState = {
         {
             id: 0,
             difficulty: 'beginner',
+            // If attempts reaches 0, word is learned and removed from list
+            // If attempt reaches 10, word is failed and removed from list.
+            attempts: [5, 5, 5, 5, 5],
             score: [2, 0, 1, 0, 1],
             percentage: 33
         },
         {
             id: 2,
             difficulty: 'intermediate',
+            attempts: [5, 5, 5, 5, 5],
             score: [0, 0, 0, 0, 0],
             percentage: 0
         },
         {
             id: 3,
             difficulty: 'advanced',
+            attempts: [5, 5, 5, 5, 5],
             score: [0, 0, 0, 0, 0],
             percentage: 0
         }

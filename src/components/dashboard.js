@@ -1,36 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import requiresLogin from './require-login';
-import Section from './section-card';
-import { fetchQuestions } from '../actions/questions';
-
+import requireLogin from './require-login';
+import { fetchQuestion } from '../actions/questions';
+import Question from './question';
 
 export class Dashboard extends React.Component {
     componentDidMount() {
-        this.props.dispatch(fetchQuestions());
-    }
+      console.log('dashboard mounted');
+        this.props.dispatch(fetchQuestion());
+      }
 
-    showCard(difficulty) {
-        this.props.history.push(`/flashcard/${difficulty}`)
-    };
-
-    render() {
-        let sections = this.props.user.map(item => <Section showCard={difficulty => this.showCard(difficulty)} key={item.id}{...item} />)
+      render() {
         return (
-            <div className="dashboard">
-                {sections}
-            </div>
+          <div className="dashboard">
+            <Question />
+          </div>
         );
+      }
     }
-}
-
-const mapStateToProps = state => {
-
-    return {
-        user: state.stats.all,
-        questions: state.questions.all
+    
+    const mapStateToProps = state => {
+      const { currentUser } = state.auth;
+      return {
+        username: state.auth.currentUser.username,
+        name: `${currentUser.firstName} ${currentUser.lastName}`,
+        id: `${currentUser.id}`,
+        currentQuestion: state.question,
+      };
     };
-};
 
 
-export default requiresLogin()(connect(mapStateToProps)(Dashboard));
+export default requireLogin()(connect(mapStateToProps)(Dashboard));
