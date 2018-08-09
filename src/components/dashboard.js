@@ -12,14 +12,8 @@ export class Dashboard extends React.Component {
       }
 
       render() {
-        let toggleButton;
-        if (!this.props.checked){
-            toggleButton= <button className="toggle-btn" onClick= {e=> this.props.dispatch(toggleLanguage())}>practice spanish</button>        
-        }
-        else{ toggleButton= <button className="toggle-btn" onClick= {e=> this.props.dispatch(toggleLanguage())}> practicar inglés</button> }
         return (
           <div className="dashboard">
-            {toggleButton}
             <Question />
             <Score />
           </div>
@@ -29,7 +23,7 @@ export class Dashboard extends React.Component {
     
     const mapStateToProps = state => {
       return {
-        checked:state.question.toggle
+        // checked:state.question.toggle
       };
     };
 

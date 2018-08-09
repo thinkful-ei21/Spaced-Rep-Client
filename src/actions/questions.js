@@ -61,30 +61,55 @@ export const fetchQuestion = () => (dispatch, getState) => {
     });
 };
 
-export const submitUserAnswerCorrect = () => (dispatch, getState) => {
+// export const submitUserAnswerCorrect = () => (dispatch, getState) => {
+//   const authToken = getState().auth.authToken;
+//   dispatch(feedbackRight());
+//   fetch(`${API_BASE_URL}/questions/correct`, {
+//     method: 'GET',
+//     headers: {
+//       Authorization: `Bearer ${authToken}`,
+//     },
+//   })
+//     .then(() => dispatch(fetchFeedBackCorrect()))
+//     .then(() => dispatch(fetchQuestion()))
+//     .catch(err => {});
+// };
+
+// export const submitUserAnswerWrong = () => (dispatch, getState) => {
+//   const authToken = getState().auth.authToken;
+//   dispatch(feedbackWrong());
+//   fetch(`${API_BASE_URL}/questions/wrong`, {
+//     method: 'GET',
+//     headers: {
+//       Authorization: `Bearer ${authToken}`,
+//     },
+//   })
+//     .then(() => dispatch(fetchFeedBackIncorrect()))
+//     .then(() => dispatch(fetchQuestion()))
+//     .catch(err => dispatch(fetchQuestionError(err)));
+// }; 
+
+export const submitUserAnswer = (answer) => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
-  dispatch(feedbackRight());
-  fetch(`${API_BASE_URL}/questions/correct`, {
-    method: 'GET',
+  fetch(`${API_BASE_URL}/questions`, {
+    method: 'PUT',
     headers: {
       Authorization: `Bearer ${authToken}`,
     },
+    body: JSON.stringify(answer)
   })
-    .then(() => dispatch(fetchFeedBackCorrect()))
+    .then((data) =>{
+     if(data=== true){
+       console.log('dispatch correct feedback');
+       dispatch(fetchFeedBackCorrect())
+       dispatch(feedbackWrong())
+      }
+     else{
+      console.log('dispatch wrong feedback');
+      dispatch(fetchFeedBackIncorrect())
+      dispatch(feedbackRight())
+      }
+    })
     .then(() => dispatch(fetchQuestion()))
     .catch(err => {});
 };
-
-export const submitUserAnswerWrong = () => (dispatch, getState) => {
-  const authToken = getState().auth.authToken;
-  dispatch(feedbackWrong());
-  fetch(`${API_BASE_URL}/questions/wrong`, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${authToken}`,
-    },
-  })
-    .then(() => dispatch(fetchFeedBackIncorrect()))
-    .then(() => dispatch(fetchQuestion()))
-    .catch(err => dispatch(fetchQuestionError(err)));
-}; 

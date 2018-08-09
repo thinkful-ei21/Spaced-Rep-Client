@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {
   submitUserAnswerCorrect,
   submitUserAnswerWrong,
+  submitUserAnswer
 } from '../actions/questions';
 
 class Question extends React.Component {
@@ -14,12 +15,13 @@ class Question extends React.Component {
     else{answer=this.props.currentQuestion.spanish.toLowerCase();}
     let userInput = e.target.userAnswer.value.toLowerCase();
     e.target.userAnswer.value = '';
+    this.props.dispatch(submitUserAnswer(userInput));
 
-    if (answer === userInput) {
-      this.props.dispatch(submitUserAnswerCorrect());
-    } else {
-      this.props.dispatch(submitUserAnswerWrong());
-    }
+    // if (answer === userInput) {
+    //   this.props.dispatch(submitUserAnswerCorrect());
+    // } else {
+    //   this.props.dispatch(submitUserAnswerWrong());
+    // }
   }
   render() {
     let questionWord;
@@ -27,9 +29,9 @@ class Question extends React.Component {
     let response;
     if(this.props.toggle){ questionWord=
       this.props.currentQuestion !== null
-        ? `what does '${this.props.currentQuestion.spanish}' mean?`
+        ? `What does '${this.props.currentQuestion.spanish}' mean?`
         : undefined;
-        buttonText= 'Submit';
+        buttonText= 'submit';
       }
     if(!this.props.toggle){ questionWord=      
       this.props.currentQuestion !== null
