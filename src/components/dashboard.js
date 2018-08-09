@@ -14,9 +14,9 @@ export class Dashboard extends React.Component {
       render() {
         let toggleButton;
         if (!this.props.checked){
-            toggleButton= <button className="check-button" onClick= {e=> this.props.dispatch(toggleLanguage())}>practice spanish</button>        
+            toggleButton= <button className="toggle-btn" onClick= {e=> this.props.dispatch(toggleLanguage())}>practice spanish</button>        
         }
-        else{ toggleButton= <button className="check-button" onClick= {e=> this.props.dispatch(toggleLanguage())}> practicar inglés</button> }
+        else{ toggleButton= <button className="toggle-btn" onClick= {e=> this.props.dispatch(toggleLanguage())}> practicar inglés</button> }
         return (
           <div className="dashboard">
             {toggleButton}

@@ -7,7 +7,7 @@ class Score extends React.Component {
       return null;
     }
     return (
-      <div className="progressbar">
+      <div className="score-card">
         <h3>
           {this.props.correct} / {this.props.total}
         </h3>

@@ -24,13 +24,14 @@ class Question extends React.Component {
   render() {
     let questionWord;
     let buttonText;
+    let response;
     if(this.props.toggle){ questionWord=
       this.props.currentQuestion !== null
         ? `what does '${this.props.currentQuestion.spanish}' mean?`
         : undefined;
         buttonText= 'Submit';
       }
-    else{ questionWord=      
+    if(!this.props.toggle){ questionWord=      
       this.props.currentQuestion !== null
       ? `¿Qué significa '${this.props.currentQuestion.english}'?`
       : undefined;
@@ -42,8 +43,21 @@ class Question extends React.Component {
     const correctAnswer =
       this.props.correctAnswer !== null ? this.props.correctAnswer : undefined;
 
+    if(feedback==='✘'){
+      response=<div className='feedback-card-x'>
+      <h3 className="feedback symbol-x">{feedback}</h3>
+      <h3 className="feedback">{correctAnswer}</h3>
+    </div>
+    } 
+    if(feedback==='✔'){
+      response=<div className='feedback-card-check'>
+      <h3 className="feedback symbol-check">{feedback}</h3>
+      <h3 className="feedback">{correctAnswer}</h3>
+    </div>
+    } 
+
     return (
-      <div className="question-dashboard">
+      <div className="question-card">
         <form onSubmit={e => this.onSubmit(e)}>
           <h2>{questionWord}</h2>
           <input
@@ -52,10 +66,9 @@ class Question extends React.Component {
             name="userAnswer"
             autoComplete="off"
           />
-          <button className="btn-dash">{buttonText}</button>
+          <button className="submit-btn">{buttonText}</button>
         </form>
-        <h3 className="feedback">{feedback}</h3>
-        <h3 className="feedback">{correctAnswer}</h3>
+          {response}
       </div>
     );
   }

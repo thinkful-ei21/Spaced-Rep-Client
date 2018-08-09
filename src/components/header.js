@@ -19,8 +19,8 @@ export class HeaderBar extends React.Component {
             header =
                 <div className="header-bar">
                     <div className="navlinks">
-                        <button className="logout-button" onClick={() => this.logOut()}>✖<i className="fas fa-sign-out-alt"></i></button>
-                        <NavLink role="navigation" activeClassName="activelink" className='link' to="/dashboard" ><i className="fas fa-book"></i></NavLink>
+                        <button className="logout-btn" onClick={() => this.logOut()}>✖</button>
+                        <NavLink role="navigation" activeClassName="activelink" className='link' to="/dashboard" ></NavLink>
                     </div>
                 </div>
         }

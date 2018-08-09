@@ -2,17 +2,87 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  font-size: 20px;
 }
 
-.login-form, .dashboard{
+h3, h2{
+  margin:18px
+}
+/* login */
+
+.login-form{
   text-align: center
 }
 .register-link{
   display: block;
 }
 
-.logout-button{
+
+/* buttons */
+
+button{
+  background:none;
+  border: 2px solid grey;
+  border-radius:2px;
+  font-size:20px;
+}
+
+.logout-btn{
 display: block;
 position: absolute;
-right:30px;
+right:20px;
+top: 20px
 }
+
+.toggle-btn{
+  margin: 10px
+
+}
+
+/* dashboard */
+
+.dashboard{
+  margin:10px;
+  text-align: center;
+  border:  2px solid black;
+  border-radius:3px
+}
+
+
+/* question */
+.useranswer{
+  font-size:20px
+}
+
+/* feedback/score */
+
+.score-card{
+  margin:10px auto
+}
+
+.feedback-card-x, .feedback-card-check{
+  border:2px grey solid;
+  width:80%;
+  max-width:360px;
+  margin:10px auto;
+}
+
+.feedback-card-check{
+  background:rgba(0, 128, 0, 0.459)
+}
+
+.feedback-card-x{
+  background:rgba(235, 0, 0, 0.452)
+}
+.symbol-x, .symbol-check{
+  margin:10px auto;
+  font-size:40px;
+}
+
+.symbol-x{
+  color:rgb(204, 3, 3);
+}
+.symbol-check{
+  color:green;
+}
+
