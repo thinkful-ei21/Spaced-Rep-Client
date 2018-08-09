@@ -19,7 +19,9 @@ export class Dashboard extends React.Component {
         else{ toggleButton= <button className="toggle-btn" onClick= {e=> this.props.dispatch(toggleLanguage())}> practicar inglés</button> }
         return (
           <div className="dashboard">
+            <div className='toggle-card'>
             {toggleButton}
+            </div>
             <Question />
             <Score />
           </div>
