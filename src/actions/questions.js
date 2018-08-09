@@ -1,4 +1,6 @@
 import { API_BASE_URL } from '../config';
+import {normalizeResponseErrors} from './utils';
+
 
 
 export const FETCH_QUESTION_ERROR = 'FETCH_QUESTION_ERROR';
@@ -89,15 +91,17 @@ export const fetchQuestion = () => (dispatch, getState) => {
 //     .catch(err => dispatch(fetchQuestionError(err)));
 // }; 
 
-export const submitUserAnswer = (answer) => (dispatch, getState) => {
+export const submitUserAnswer = answer => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   fetch(`${API_BASE_URL}/questions`, {
-    method: 'PUT',
+    method: 'POST',
     headers: {
-      Authorization: `Bearer ${authToken}`,
-    },
+      'content-type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+        },
     body: JSON.stringify(answer)
   })
+    .then(res => normalizeResponseErrors(res))
     .then((data) =>{
      if(data=== true){
        console.log('dispatch correct feedback');
