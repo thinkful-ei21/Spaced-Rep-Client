@@ -1,4 +1,5 @@
 Live version of app: https://leo-spaced-rep-client.herokuapp.com/dashboard
+(free heroku server may fall asleep.  If app will not log in please visit https://leo-spaced-rep-server.herokuapp.com/ and try again)
 
 
 spanGlish
