@@ -19,11 +19,11 @@ import {
     correctAnswer: null,
     sessionScore: 0,
     totalSessionQuestions: 0,
+    toggle:true
   };
   
   export default function questionReducer(state = initialState, action) {
     if (action.type === FETCH_QUESTION_SUCCESS) {
-      console.log('fetch reducer fired')
       return Object.assign({}, state, {
         loading: false,
         error: null,

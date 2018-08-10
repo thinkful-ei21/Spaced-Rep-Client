@@ -1,5 +1,5 @@
 import { API_BASE_URL } from '../config';
-import {normalizeResponseErrors} from './utils';
+
 
 
 
@@ -49,7 +49,6 @@ export const toggleLanguage = () => ({
 
 export const fetchQuestion = () => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
-  console.log('fetch question action fired')
   return fetch(`${API_BASE_URL}/questions`, {
     method: 'GET',
     headers: {
@@ -62,56 +61,25 @@ export const fetchQuestion = () => (dispatch, getState) => {
       dispatch(fetchQuestionError(err));
     });
 };
-
-// export const submitUserAnswerCorrect = () => (dispatch, getState) => {
-//   const authToken = getState().auth.authToken;
-//   dispatch(feedbackRight());
-//   fetch(`${API_BASE_URL}/questions/correct`, {
-//     method: 'GET',
-//     headers: {
-//       Authorization: `Bearer ${authToken}`,
-//     },
-//   })
-//     .then(() => dispatch(fetchFeedBackCorrect()))
-//     .then(() => dispatch(fetchQuestion()))
-//     .catch(err => {});
-// };
-
-// export const submitUserAnswerWrong = () => (dispatch, getState) => {
-//   const authToken = getState().auth.authToken;
-//   dispatch(feedbackWrong());
-//   fetch(`${API_BASE_URL}/questions/wrong`, {
-//     method: 'GET',
-//     headers: {
-//       Authorization: `Bearer ${authToken}`,
-//     },
-//   })
-//     .then(() => dispatch(fetchFeedBackIncorrect()))
-//     .then(() => dispatch(fetchQuestion()))
-//     .catch(err => dispatch(fetchQuestionError(err)));
-// }; 
-
+ 
 export const submitUserAnswer = answer => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
   fetch(`${API_BASE_URL}/questions`, {
-    method: 'POST',
+    method: 'PUT',
     headers: {
-      'content-type': 'application/json',
       Authorization: `Bearer ${authToken}`
         },
-    body: JSON.stringify(answer)
+    body: answer
   })
-    .then(res => normalizeResponseErrors(res))
+    .then((res)=>res.json())
     .then((data) =>{
-     if(data=== true){
-       console.log('dispatch correct feedback');
-       dispatch(fetchFeedBackCorrect())
-       dispatch(feedbackWrong())
+     if(data === true){
+       dispatch(fetchFeedBackCorrect());
+       dispatch(feedbackRight())
       }
      else{
-      console.log('dispatch wrong feedback');
-      dispatch(fetchFeedBackIncorrect())
-      dispatch(feedbackRight())
+      dispatch(fetchFeedBackIncorrect());
+      dispatch(feedbackWrong())
       }
     })
     .then(() => dispatch(fetchQuestion()))

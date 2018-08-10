@@ -1,27 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  submitUserAnswerCorrect,
-  submitUserAnswerWrong,
-  submitUserAnswer
-} from '../actions/questions';
+import {submitUserAnswer} from '../actions/questions';
 
 class Question extends React.Component {
   onSubmit(e) {
     e.preventDefault();
-
-    let answer; 
-    if(this.props.toggle) {answer=this.props.currentQuestion.english.toLowerCase();}
-    else{answer=this.props.currentQuestion.spanish.toLowerCase();}
     let userInput = e.target.userAnswer.value.toLowerCase();
     e.target.userAnswer.value = '';
     this.props.dispatch(submitUserAnswer(userInput));
 
-    // if (answer === userInput) {
-    //   this.props.dispatch(submitUserAnswerCorrect());
-    // } else {
-    //   this.props.dispatch(submitUserAnswerWrong());
-    // }
   }
   render() {
     let questionWord;

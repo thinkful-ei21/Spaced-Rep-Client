@@ -26,45 +26,68 @@ h3, h2{
 /* buttons */
 
 button:hover, button:focus{ 
-  background-color:rgb(221, 219, 219)
+  background-color:rgba(150, 150, 150, 0.856);
+  color:white
 }
 
 button{
-  background:white;
-  border: 2px solid grey;
-  border-radius:2px;
+  background:rgb(243, 243, 243);
+  border: 2px solid rgba(128, 128, 128, 0.664);
+  border-radius:3px;
   font-size:20px;
-  transition: all 0.1s;
-}
-
-.logout-btn{
-float:right;
-font-size:17px;
+  transition: all 0.2s;
 }
 
 
+.toggle-btn{
+  margin: 15px auto 0px auto;
+  padding:4px 4px
+}
+
+.login-button{
+  margin:5px
+}
+
+
+/* login */
+
+.form-input{
+  margin:10px
+}
+/* header */
+
+.header-bar{
+text-align: right
+}
 /* dashboard */
 
 .dashboard{
-  text-align: center;}
+  text-align: center;
+  background: radial-gradient(rgb(202, 202, 202), rgb(224, 224, 224), rgb(255, 253, 253) );
+  box-shadow: 0px 5px 50px -6px rgba(0,0,0,0.51);
+  max-width: 600px;
+  margin:10px auto;
+  padding-bottom:10px;
+  border-radius: 5px
+}
 
 
 /* question */
 .useranswer{
   font-size:20px;
   margin-bottom:5px;
-  border:2px grey solid;
-  border-radius: 2px;
+  border: 2px solid rgba(128, 128, 128, 0.664);
+  border-radius: 3px;
 }
 
 /* feedback/score */
 
 .score-card{
-  margin:10px auto
+  margin:10px auto;
 }
 
 .feedback-card-x, .feedback-card-check{
-  border:2px rgba(128, 128, 128, 0.685) solid;
+  border:1px rgba(177, 177, 177, 0.349) solid;
   border-radius: 3px;
   width:80%;
   max-width:360px;
@@ -73,11 +96,12 @@ font-size:17px;
 }
 
 .feedback-card-check{
-  background:rgb(109, 165, 109)
+  background: radial-gradient(rgba(109, 165, 109, 0.5), rgba(109, 165, 109, 0.7), rgba(109, 165, 109, 0.9) );
+
 }
 
 .feedback-card-x{
-  background:rgb(253, 120, 120)
+  background: radial-gradient(rgba(250, 90, 90, 0.5), rgba(250, 90, 90, 0.7), rgba(250, 90, 90, 0.9) );
 }
 .symbol-x, .symbol-check{
   margin:10px auto;
