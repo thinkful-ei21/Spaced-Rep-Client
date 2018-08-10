@@ -39,12 +39,18 @@ export class App extends React.Component {
     }
 
     render() {
+        let app='app';
+        if (this.props.loggedIn) {
+            app='app-in'
+        }
         return (
-                <div className="app">
+                <div className={app}>
                     <HeaderBar />
                     <Route exact path="/" component={LandingPage} />
                     <Route exact path="/dashboard" component={Dashboard} />
                     <Route exact path="/register" component={RegistrationPage} />
+                    <img className='temple-img' src='https://d35aaqx5ub95lt.cloudfront.net/images/courses/es/full_colored.svg'></img>
+                    <div className='grass'></div>
                 </div>
         );
     }

@@ -49,7 +49,7 @@ export class LoginForm extends React.Component {
                 <button className="login-button" >
                     Log in
                 </button>
-                <Link className="register-link" to="/register">Register</Link>
+                <Link className="register-link" to="/register">Create Account</Link>
             </form>
         );
     }
