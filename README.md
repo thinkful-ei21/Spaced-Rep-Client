@@ -5,10 +5,6 @@
 
 [Spanglsih](https://leo-spaced-rep-client.herokuapp.com/dashboard) uses the power of spaced repetition to help users learn vocab words in Spanish and English. 
 
-
-https://leo-spaced-rep-client.herokuapp.com/dashboard
-Please note that the free heroku server may fall asleep.  If app will not log in please open https://leo-spaced-rep-server.herokuapp.com/ in a seperate tab and try logging in again)
-
 **Demo Account**<br />
 user: demo<br />
 password: password<br />
