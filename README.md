@@ -3,7 +3,7 @@
 
 # Spanglish
 
-[Spanglsih](https://leo-spaced-rep-client.herokuapp.com/dashboard) uses the power of spaced repetition to help users learn vocab words in Spanish and English. 
+[Spanglish](https://leo-spaced-rep-client.herokuapp.com/dashboard) uses the power of spaced repetition to help users learn vocab words in Spanish and English. 
 
 **Demo Account**<br />
 user: demo<br />
